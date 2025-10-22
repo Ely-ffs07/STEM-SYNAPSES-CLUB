@@ -1,0 +1,523 @@
+/* style.css - Enhanced Scientific/Mathematical Aesthetic for Synapses Club */
+
+:root {
+  --primary-color: #b30000;
+  --secondary-color: #fff5f5;
+  --text-color: #2c2c2c;
+  --accent-color: #ff4d4d;
+  --highlight-color: #ffcccc;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 50%, #ffd9d9 100%);
+  color: var(--text-color);
+  line-height: 1.7;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Scientific/Mathematical Background Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 49px, #b30000 49px, #b30000 50px),
+    repeating-linear-gradient(90deg, transparent, transparent 49px, #b30000 49px, #b30000 50px);
+  background-size: 50px 50px;
+}
+
+/* Floating Mathematical Symbols */
+body::after {
+  content: '∫ ∑ π ∞ √ ∂ Δ θ λ Φ Ψ ≈ ≠ ≤ ≥ ∈ ∀ ∃ ∇ ⊕ ⊗';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  color: var(--primary-color);
+  opacity: 0.04;
+  z-index: 0;
+  pointer-events: none;
+  word-spacing: 3rem;
+  line-height: 5rem;
+  padding: 2rem;
+  overflow: hidden;
+  animation: float 60s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-100px) rotate(5deg);
+  }
+}
+
+/* === HEADER === */
+header {
+  background: linear-gradient(135deg, #b30000 0%, #8b0000 100%);
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(179, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Scientific Pattern Overlay on Header */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 L90 90 L10 90 Z M50 30 C60 30 60 40 50 40 C40 40 40 30 50 30' stroke='white' fill='none' stroke-width='1'/%3E%3Ccircle cx='50' cy='70' r='8' stroke='white' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  animation: slidePattern 20s linear infinite;
+}
+
+@keyframes slidePattern {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 80px 80px;
+  }
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+header p {
+  font-size: 1.2rem;
+  font-style: italic;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+/* === NAVIGATION BAR === */
+.navbar {
+  background: linear-gradient(135deg, #800000 0%, #600000 100%);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 12px var(--shadow-medium);
+  position: relative;
+  z-index: 2;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
+}
+
+.navbar a:hover::before {
+  left: 0;
+}
+
+.navbar a:hover {
+  background: rgba(179, 0, 0, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a.active {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* === MAIN === */
+main {
+  padding: 3rem 1rem;
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* === CARDS === */
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--shadow-light);
+  margin-bottom: 2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 1px solid rgba(179, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Subtle mathematical symbol watermark on cards */
+.card::before {
+  content: '∑';
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-size: 12rem;
+  color: var(--primary-color);
+  opacity: 0.02;
+  font-weight: bold;
+  transform: rotate(-15deg);
+}
+
+.card:nth-child(even)::before {
+  content: 'π';
+  left: -20px;
+  right: auto;
+  transform: rotate(15deg);
+}
+
+.card:nth-child(3n)::before {
+  content: '∞';
+  transform: rotate(-10deg);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(179, 0, 0, 0.15);
+  border-color: var(--accent-color);
+}
+
+/* === CARD IMAGE === */
+.card-image {
+  background: linear-gradient(135deg, #993333 0%, #7a2828 100%);
+  color: #f8dfe5;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+
+.card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.card-image img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card-image:hover img {
+  transform: scale(1.05);
+}
+
+.card-image h3 {
+  font-size: 1.3rem;
+  padding: 1.2rem 2rem 0.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-image blockquote {
+  font-style: italic;
+  font-size: 1.05rem;
+  padding: 0.5rem 2rem;
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  margin: 0.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-image p,
+.card-image button {
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-image button {
+  background: #800000;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.8rem;
+  margin: 1rem 2rem 1.5rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.card-image button:hover {
+  background: #600000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* === CARD CONTENT === */
+.card-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* === BUTTONS === */
+button {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #8b0000 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(179, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:hover {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(179, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* === CARD LINK === */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card-link:hover {
+  transform: scale(1.02);
+}
+
+/* === PROJECT GRID === */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.project-card {
+  background: white;
+  text-align: center;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-color);
+  box-shadow: 0 4px 16px var(--shadow-light);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(179, 0, 0, 0.08);
+  position: relative;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover::after {
+  transform: scaleX(1);
+}
+
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+.project-card p {
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(179, 0, 0, 0.15);
+}
+
+/* === TITLES === */
+h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+/* === FOOTER === */
+footer {
+  background: linear-gradient(135deg, #b30000 0%, #8b0000 100%);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -4px 20px rgba(179, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+footer::before {
+  content: 'E = mc² | φ = (1 + √5)/2 | ∮ E·dℓ = -dΦ/dt';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.85rem;
+  opacity: 0.15;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  header p {
+    font-size: 1rem;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .navbar a {
+    text-align: center;
+  }
+  
+  main {
+    padding: 2rem 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+  
+  body::after {
+    font-size: 1.5rem;
+    word-spacing: 2rem;
+    line-height: 4rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
